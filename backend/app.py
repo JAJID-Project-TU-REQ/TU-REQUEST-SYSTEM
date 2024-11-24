@@ -9,7 +9,6 @@ from fastapi.security import OAuth2PasswordRequestForm
 from typing import List, Optional
 from datetime import datetime
 from urllib.parse import quote
-import model
 
 #App object
 app = FastAPI()
@@ -20,7 +19,7 @@ origins = ["http://localhost:3000"] # Replace with your frontend URL
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://tu-request-system-theta.vercel.app/"],  # Allows specified origins
+    allow_origins=["*"],  # Allows specified origins
     allow_credentials=True,
     allow_methods=["*"],  # Allows all HTTP methods
     allow_headers=["*"],  # Allows all headers
@@ -42,11 +41,6 @@ manager = LoginManager(SECRET, token_url="/auth/token")
 async def root():
     return {"message":"hello"}
 
-# สำหรับเรียกใช้งาน uvicorn
-if __name__ == "__main__":
-    import uvicorn
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0",port=port)
 
 # Login Endpoint
 @manager.user_loader
