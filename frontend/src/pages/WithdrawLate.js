@@ -30,8 +30,8 @@ function WithdrawLate() {
   const [section, setSection] = useState('');
   const [subject, setSubject] = useState('');
 
-  const form_location = "http://localhost:8000/forms";
-  const file_upload_location = 'http://localhost:8000/pdf';
+  const form_location = "https://tu-request-backend.onrender.com/forms";
+  const file_upload_location = 'https://tu-request-backend.onrender.com/pdf';
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,7 +44,7 @@ function WithdrawLate() {
       setSenderAdvisor(advisor);
     }
     if (professor) {
-      axios.get(`http://localhost:8000/find-name-by-username/${professor}`)
+      axios.get(`https://tu-request-backend.onrender.com/find-name-by-username/${professor}`)
         .then(response => {
           setProfName(response.data.name_th); // เก็บ username ของ advisor
         })

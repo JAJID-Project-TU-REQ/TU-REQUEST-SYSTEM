@@ -30,7 +30,7 @@ function RegistLate() {
   const [section, setSection] = useState('');
   const [subject, setSubject] = useState('');
 
-  const form_location = "http://localhost:8000/forms";
+  const form_location = "https://tu-request-backend.onrender.com/forms";
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,7 +43,7 @@ function RegistLate() {
       setSenderAdvisor(advisor);
     }
     if (professor) {
-      axios.get(`http://localhost:8000/find-name-by-username/${professor}`)
+      axios.get(`https://tu-request-backend.onrender.com/find-name-by-username/${professor}`)
         .then(response => {
           setProfName(response.data.name_th); // เก็บ username ของ advisor
         })

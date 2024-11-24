@@ -7,7 +7,7 @@ const useAdvisorDetails = (username) => { // ใช้ prefix "use" ตาม co
     useEffect(() => {
         const fetchAdvisorDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/get_advisor/${username}`);
+                const response = await axios.get(`https://tu-request-backend.onrender.com/get_advisor/${username}`);
                 setAdvisor(response.data); // เก็บค่าที่ fetch ได้ลง state
             } catch (err) {
                 console.error("Failed to fetch advisor details:", err);

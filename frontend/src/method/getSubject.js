@@ -10,7 +10,7 @@ export default function GetSubject(){
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/get_subjects`);
+        const response = await axios.get(`https://tu-request-backend.onrender.com/get_subjects`);
         
         if (response.data && response.data.length === 0) {
           setData([]);  // Set an empty array if no forms are found

@@ -10,7 +10,7 @@ function SelectProfessor() {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/get_professor`);
+        const response = await axios.get(`https://tu-request-backend.onrender.com/get_professor`);
         
         if (response.data && response.data.length === 0) {
           setData([]);  // Set an empty array if no forms are found

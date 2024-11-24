@@ -28,8 +28,8 @@ export default function Quit() {
   const [parent_IDcard, setParentIDCard] = useState(null);
   const [library_approval, setLibraryApproval] = useState(null);
 
-  const form_location = 'http://localhost:8000/forms';
-  const file_upload_location = 'http://localhost:8000/pdf';
+  const form_location = 'https://tu-request-backend.onrender.com/forms';
+  const file_upload_location = 'https://tu-request-backend.onrender.com/pdf';
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function Quit() {
       setSenderAdvisor(advisor);
     }
     if (sender_advisor) {
-      axios.get(`http://localhost:8000/find-user-by-name/${sender_advisor}`)
+      axios.get(`https://tu-request-backend.onrender.com/find-user-by-name/${sender_advisor}`)
         .then(response => {
           setAdvisorId(response.data.username); // เก็บ username ของ advisor
         })

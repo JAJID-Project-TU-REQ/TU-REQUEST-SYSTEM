@@ -10,7 +10,7 @@ const FormDetails = (form_id) => {
     const fetchFormDetails = async () => {
       try {
         // Make the axios GET request to fetch form details
-        const response = await axios.get(`http://localhost:8000/forms/${form_id}`);
+        const response = await axios.get(`https://tu-request-backend.onrender.com/forms/${form_id}`);
         
         // Set the response data to the form state
         setForm(response.data);

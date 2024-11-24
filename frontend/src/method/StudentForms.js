@@ -11,7 +11,7 @@ function StudentForms(studentUsername) {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/student_forms/${studentUsername}`);
+        const response = await axios.get(`https://tu-request-backend.onrender.com/student_forms/${studentUsername}`);
         
         if (response.data && response.data.length === 0) {
           setForms([]);  // Set an empty array if no forms are found

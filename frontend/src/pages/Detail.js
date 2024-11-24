@@ -39,7 +39,7 @@ export default function Detail() {
   if (error) return <div>{error}</div>;
 
   const handleViewPDF = (file_id) => {
-    window.open(`http://localhost:8000/pdf/${file_id}`, "_blank");
+    window.open(`https://tu-request-backend.onrender.com/pdf/${file_id}`, "_blank");
   };
 
   const handleApproval = async (action) => {
@@ -52,7 +52,7 @@ export default function Detail() {
           comment: action === "disapproved" ? comment : null,
         };
 
-        const response = await axios.post("http://localhost:8000/approve_form/", approvalData);
+        const response = await axios.post("https://tu-request-backend.onrender.com/approve_form/", approvalData);
 
         if (response.data.message) {
           alert("การอัปเดตสถานะคำร้องสำเร็จ");

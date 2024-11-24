@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const approveForm = async (form_id, professorUsername, status, comment) => {
   try {
-    const response = await axios.patch(`http://localhost:8000/forms/${form_id}/approve`, {
+    const response = await axios.patch(`https://tu-request-backend.onrender.com/forms/${form_id}/approve`, {
       professor: professorUsername,
       status: status,
       comment: comment,
