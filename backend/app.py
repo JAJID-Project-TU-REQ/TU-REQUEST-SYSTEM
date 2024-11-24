@@ -9,6 +9,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from typing import List, Optional
 from datetime import datetime
 from urllib.parse import quote
+import model
 
 #App object
 app = FastAPI()
