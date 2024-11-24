@@ -41,6 +41,7 @@ manager = LoginManager(SECRET, token_url="/auth/token")
 async def root():
     return {"message":"hello"}
 
+
 # Login Endpoint
 @manager.user_loader
 async def load_user(username: str):
