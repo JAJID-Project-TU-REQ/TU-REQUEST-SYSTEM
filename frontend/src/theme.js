@@ -6,7 +6,7 @@ const thammasat = {
   fontFamily: 'Thammasat',
   fontStyle: 'Bold',
   fontDisplay: 'swap',
-  fontWeight: 400,
+  fontWeight: 800,
   src: `
     local('Thammasat'),
     local('Thammasat-Bold'),

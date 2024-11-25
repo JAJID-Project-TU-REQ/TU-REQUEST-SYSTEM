@@ -86,7 +86,7 @@ function NormalRequest() {
       content: content,
       subject: subject,
       section: section,
-      file : files
+      ...(files.length > 0 && { file: files })
     };
 
     const formData = {

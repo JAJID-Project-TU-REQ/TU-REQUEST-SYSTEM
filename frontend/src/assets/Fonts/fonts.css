@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Thammasat';
+    src: url('./Thammasat-Regular.ttf') format('truetype'),
+         url('./Thammasat-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Thammasat';
+    src: url('./Thammasat-Bold.ttf') format('truetype'),
+         url('./Thammasat-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+  }
+  

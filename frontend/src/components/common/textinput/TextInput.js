@@ -8,7 +8,7 @@ const TextInput = (props) => {
       sx={{ m: props.m, display: 'flex', flexGrow: props.flexGrow, 
         '& .MuiOutlinedInput-root': {
           borderRadius: '20px',
-          fontFamily: 'Thammasart',
+          fontFamily: 'Kanit, Arial, sans-serif',
            // Apply border-radius to the input field
         }
       }} />
