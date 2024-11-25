@@ -15,8 +15,9 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { Box } from '@mui/material'
+
 function InfoPage() {
-  const pdfUrl = "https://drive.google.com/file/d/17U__1NCSopCv6wR3sfH_Rg7P0OhvtzgZ/preview";
+  const pdfUrl = "https://drive.google.com/file/d/1J6SAnIUJFAXHAoXaJSys5Bk7jvqWzcxl/preview";
 
   return (
     <Container maxWidth="md" sx={{ mt: 14, mb: 5 }}>
@@ -165,8 +166,18 @@ function InfoPage() {
               <Typography sx={{fontWeight:'bold'}}> ด้านล่าง</Typography>
             </TimelineContent>
           </TimelineItem>
-
         </Timeline>
+        <Typography variant='h6' sx={{fontWeight: 600, mt: 4}}>ตัวอย่างรายละเอียดคำร้อง</Typography>
+        <Box sx={{ mt: 4 }}>
+          <Typography variant='h6' sx={{fontWeight: 100}}>รายละเอียดการเทียบโอนวิชา EL105</Typography>
+          <iframe
+            src={pdfUrl}
+            width="100%"
+            height="600px"
+            style={{ border: 'none' }}
+            title="PDF Preview"
+          ></iframe>
+        </Box>
       </Grid>
     </Grid>
   </Container>

@@ -188,7 +188,7 @@ function NormalRequest() {
             <Typography variant='h6' sx={{ mr: 2, backgroundColor: "#902923", borderRadius: '8px', padding: '8px 18px', color: '#FFFFFF' }}>
               รหัสวิชา
             </Typography>
-            <SelectSubject onChange={event => setProf(event.target.value)}/>
+            <SelectSubject onChange={event => setSubject(event.target.value)}/>
           </Box>
         </Grid>
 
@@ -198,7 +198,7 @@ function NormalRequest() {
             <Typography variant='h6' sx={{ ml: 3, mt: 2, backgroundColor: "#902923", borderRadius: '8px', padding: '8px 18px', color: '#FFFFFF' }}>
               กลุ่มเรียนที่ศึกษา
             </Typography>
-            <TextField id="section" label="กรอกรหัสวิชา" variant="outlined" onChange={event => setSection(event.target.value)} sx={{mt:2, borderRadius:5,ml: 2, flexGrow: 1 }} />
+            <TextField id="section" label="กรอกกลุ่มเรียน (Section)" variant="outlined" onChange={event => setSection(event.target.value)} sx={{mt:2, borderRadius:5,ml: 2, flexGrow: 1 }} />
           </Box>
         
         {/* File Upload */}

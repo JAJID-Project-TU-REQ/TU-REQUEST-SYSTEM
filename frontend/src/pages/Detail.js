@@ -8,14 +8,17 @@ import TransferGradeDetail from "../components/DetailComponents/TransferGradeDet
 import ExemptionTUDetail from "../components/DetailComponents/ExemptionTUDetail/ExemptionTUDetail";
 import QuitDetail from "../components/DetailComponents/QuitDetail/QuitDetail";
 import RegisAndWithdarw from "../components/DetailComponents/LateRegisandWithdraw/RegisAndWithdraw";
+import GetName from "../method/getName";
 
 export default function Detail() {
   const { form_id } = useParams(); // Extract the formId from the URL
   const { form, loading, error } = FormDetails(form_id);
   const [Role, setRole] = useState("");
+  const [fullName, setFullName] = useState("");
   const [comment, setComment] = useState("");
 
   const navigate = useNavigate();
+  // const {name, loading2, error2} = GetName(form.senderId);
 
   const checkButton = () => {
     const username = localStorage.getItem("username");
@@ -30,7 +33,25 @@ export default function Detail() {
     if (storedRole) {
       setRole(storedRole);
     }
-  }, []);
+
+    if (form?.senderId) {
+      fetchFullName(form.senderId);
+    }
+
+  }, [form]);
+
+  const fetchFullName = async (senderId) => {
+    try {
+      const response = await axios.get(
+        `https://tu-request-backend.onrender.com/find-name-by-username/${senderId}`
+      );
+      if (response.data && response.data.name_th) {
+        setFullName(response.data.name_th);
+      }
+    } catch (err) {
+      console.error("Error fetching sender's full name:", err);
+    }
+  };
 
   console.log("Form ID from URL:", form_id); // Check if formId is being retrieved
   console.log("Form Details:", form); // Check if form is being retrieved
@@ -41,6 +62,7 @@ export default function Detail() {
   const handleViewPDF = (file_id) => {
     window.open(`https://tu-request-backend.onrender.com/pdf/${file_id}`, "_blank");
   };
+  
 
   const handleApproval = async (action) => {
     if (Role === "professor" || Role === "admin") {
@@ -84,7 +106,7 @@ export default function Detail() {
       case "ถอนวิชาล่าช้ากรณีพิเศษ":
         return <RegisAndWithdarw form={form} />//
       default:
-        return <h1>ควย</h1>
+        return <h1>error</h1>
     }
   }
 
@@ -173,24 +195,26 @@ export default function Detail() {
         </Box>
         <Paper elevation={0} sx={{ p: 4 }}>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-            <Grid container spacing={3}>
               <Grid display={"flex"} item xs={12} sm={6}>
                 <Typography variant="subtitle2" fontWeight="bold" gutterBottom sx={{ fontSize: "1.1rem" }}>
                   เขียนวันที่ :
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ fontSize: "1.1rem", ml: 1 }}>
+                <Typography variant="body2" color="text.secondary" sx={{ fontSize: "1.1rem", ml: 1,mr:5 }}>
                   {form.date}
                 </Typography>
-              </Grid>
-              <Grid display={"flex"} item xs={12} sm={6}>
+                <Typography variant="subtitle2" fontWeight="bold" gutterBottom sx={{ fontSize: "1.1rem" }}>
+                  ผู้ส่ง :
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{fontSize: "1.1rem", ml: 1,mr:5 }}>
+                  {fullName}
+                </Typography>
                 <Typography variant="subtitle2" fontWeight="bold" gutterBottom sx={{ fontSize: "1.1rem" }}>
                   อาจารย์ที่ปรึกษา :
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ fontSize: "1.1rem" }}>
+                <Typography variant="body2" color="text.secondary" sx={{ fontSize: "1.1rem", ml: 1,mr:5 }}>
                   {form.sender_advisor}
                 </Typography>
               </Grid>
-            </Grid>
 
             <Box display={"flex"}>
               <Typography variant="subtitle2" fontWeight="bold" gutterBottom sx={{ fontSize: "1.1rem" }}>
@@ -200,32 +224,6 @@ export default function Detail() {
                 {form.form_type}
               </Typography>
             </Box>
-
-            {/* <Box display={"flex"}>
-              <Box sx={{ width: "15%", mr: 0 }}>
-                <Typography variant="subtitle2" fontWeight="bold" gutterBottom sx={{ fontSize: "1.1rem" }}>
-                  คำอธิบายประกอบ :
-                </Typography>
-              </Box>
-              <Box
-                sx={{
-                  ml: 0,
-                  width: "88%",
-                  maxHeight: "200px",
-                  overflow: "auto",
-                  whiteSpace: "pre-wrap",
-                  wordWrap: "break-word",
-                }}
-              >
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ whiteSpace: "pre-line", fontSize: "1.1rem" }}
-                >
-                  {form.additional_fields.content}
-                </Typography>
-              </Box>
-            </Box> */}
             {renderFormDetail()}
 
             {form.additional_fields.file &&
@@ -258,8 +256,6 @@ export default function Detail() {
                 ไม่มีไฟล์แนบ
               </Typography>
             )}
-
-           
             {((Role === "professor" || Role === "admin") && checkButton()) && (
               <Box sx={{ display: "flex", gap: 2, mt: 2, flexGrow: 1 }}>
                  <TextField

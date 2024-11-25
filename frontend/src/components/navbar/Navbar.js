@@ -41,7 +41,7 @@ const Navbar = () => {
              <MenuIcon />
             </IconButton>
             <Grid2 item sx={{flexGrow: 1}}>
-            <img src={logo} alt="Thamasart" style={{ height: '40px' }} />
+            <img src="https://tu.ac.th/uploads/news-tu/banner/banner64/02%20%E0%B9%82%E0%B8%A5%E0%B9%82%E0%B8%81%E0%B9%89%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%88%E0%B8%B1%E0%B8%81%E0%B8%A3%20%E0%B8%82%E0%B8%B2%E0%B8%A7-%E0%B8%94%E0%B8%B3.jpg" alt="Thamasart" style={{ height: '40px' }} />
             </Grid2>
             <Typography variant="body1" sx={{ color: '#000', mr: 2 }}>{full_name}</Typography>
             <IconButton
